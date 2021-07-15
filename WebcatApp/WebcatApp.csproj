@@ -123,8 +123,20 @@
     <Compile Include="ViewModel\Base\BasePageModel.cs" />
     <Compile Include="ViewModel\Base\ViewModelLocator.cs" />
     <Compile Include="ViewModel\InitPageModel.cs" />
+    <Compile Include="ViewModel\PdfPageModel.cs" />
+    <Compile Include="ViewModel\TreePageModel.cs" />
+    <Compile Include="ViewModel\UxPageModel.cs" />
     <Compile Include="View\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PdfPage.xaml.cs">
+      <DependentUpon>PdfPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreePage.xaml.cs">
+      <DependentUpon>TreePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UxPage.xaml.cs">
+      <DependentUpon>UxPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +183,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\InitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PdfPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UxPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
