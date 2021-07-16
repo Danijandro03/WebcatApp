@@ -37,6 +37,5 @@ namespace WebcatApp.ViewModel.Base
         public TreePageModel TreePage => ServiceLocator.Current.GetInstance<TreePageModel>();
         public PdfPageModel PdfPage => ServiceLocator.Current.GetInstance<PdfPageModel>();
         public UxPageModel UxPage => ServiceLocator.Current.GetInstance<UxPageModel>();
-
     }
 }

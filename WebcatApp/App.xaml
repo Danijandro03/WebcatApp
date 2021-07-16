@@ -2,7 +2,6 @@
     x:Class="WebcatApp.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WebcatApp"
     xmlns:viewModels="using:WebcatApp.ViewModel.Base">
 
     <Application.Resources>

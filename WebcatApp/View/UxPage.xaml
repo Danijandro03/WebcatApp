@@ -11,6 +11,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <TextBlock Text="UxPage" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Page>

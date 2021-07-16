@@ -2,6 +2,7 @@
     x:Class="WebcatApp.View.InitPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
     xmlns:local="using:WebcatApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,7 +11,16 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=InitPage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
-    <Grid>
-        <TextBlock Text="Welcome to Technical Test" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+    <muxc:NavigationView x:Name="NavView" Header="Technical Test" 
+                         PaneDisplayMode="LeftMinimal" IsBackButtonVisible="Collapsed"
+                         AlwaysShowHeader="True" PaneTitle="Menu" 
+                         ItemInvoked="{x:Bind ViewModel.NavView_ItemInvoked}">
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem  Content="Tree" Tag="Tree"/>
+            <muxc:NavigationViewItem  Content="PDF" Tag="Pdf"/>
+            <muxc:NavigationViewItem  Content="UX" Tag="Ux"/>
+        </muxc:NavigationView.MenuItems>
+        <Frame Loaded="{x:Bind ViewModel.FrameLoaded}"/>
+    </muxc:NavigationView>
+    
 </Page>
