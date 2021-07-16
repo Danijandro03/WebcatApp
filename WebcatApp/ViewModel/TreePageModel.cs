@@ -26,16 +26,35 @@ namespace WebcatApp.ViewModel
 
         private void FatherLoad()
         {
-            for (int x = 0; x < 2; x++)
+            for (int x = 1; x < 4; x++)
             {
                 CreaFath(x);
+            }
+
+            foreach (FatherModel fa in Fath)
+            {
+                fa.Sons = new List<FatherModel>();
+                for (int y = 1; y < 3; y++)
+                {
+                    fa.Sons.Add(new FatherModel { Id = y, Name = "Son " + y.ToString()});
+                }
+                foreach (FatherModel f in fa.Sons)
+                {
+                    f.Sons = new List<FatherModel>();
+                    for (int z = 1; z < 4; z++)
+                    {
+                        f.Sons.Add(new FatherModel { Id = z, Name = "SubSon " + z.ToString() });
+                    }
+                    
+                }
+                
             }
 
         }
 
         private void CreaFath(int x)
         {
-            Fath.Add(new FatherModel { Id = x, Name = "Nombre" + x.ToString() });
+            Fath.Add(new FatherModel { Id = x, Name = "Father " + x.ToString() });
         }
     }
 }

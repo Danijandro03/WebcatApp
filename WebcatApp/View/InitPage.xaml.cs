@@ -24,13 +24,14 @@ namespace WebcatApp.View
     /// </summary>
     public sealed partial class InitPage : Page
     {
-        private InitPageModel ViewModel
-        {
-            get { return ViewModelLocator.Locator.InitPage; }
-        }
+
         public InitPage()
         {
             this.InitializeComponent();
+        }
+        private InitPageModel ViewModel
+        {
+            get { return ViewModelLocator.Locator.InitPage; }
         }
 
     }

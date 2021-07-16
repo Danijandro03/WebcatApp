@@ -7,11 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=TreePage}"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:Model="using:WebcatApp.Model"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock Text="TreePage" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-    </Grid>
+    <RelativePanel HorizontalAlignment="Center">
+        <muxc:TreeView ItemsSource="{Binding Fath}" HorizontalAlignment="Center">
+            <muxc:TreeView.ItemTemplate>
+                <DataTemplate x:DataType="Model:FatherModel">
+                    <muxc:TreeViewItem ItemsSource="{x:Bind Sons}" Content="{x:Bind Name}"/>
+                </DataTemplate>
+            </muxc:TreeView.ItemTemplate>
+        </muxc:TreeView>
+    </RelativePanel>
 </Page>

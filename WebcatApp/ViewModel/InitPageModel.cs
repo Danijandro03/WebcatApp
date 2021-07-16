@@ -43,23 +43,6 @@ namespace WebcatApp.ViewModel
             Frame = (Frame)sender;
             
         }
-        public void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender,
-            Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
-        {
-            var names = args.InvokedItemContainer;
-            if (names.Tag.ToString() == "Tree")
-            {
-                Frame.Navigate(typeof(TreePage), null);
-            }
-            else if (names.Tag.ToString() == "Pdf")
-            {
-                Frame.Navigate(typeof(PdfPage), null);
-            }
-        }
-        public void FrameLoaded(object sender, RoutedEventArgs e)
-        {
-            Frame = (Frame)sender;
-        }
-
+        
     }
 }
