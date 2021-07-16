@@ -10,7 +10,10 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=PdfPage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
-    <Grid>
-        <TextBlock Text="PfdPage" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+    
+    <RelativePanel Grid.Row="1">
+        <AppBarButton x:Name="CustomButton" Command="{Binding ReturnText}"/>
+        <TextBlock x:Name="response" Margin="8,0,0,0" FontFamily="Global User Interface"
+                RelativePanel.RightOf="CustomButton" RelativePanel.AlignVerticalCenterWith="CustomButton" Text="{Binding texto}"/>
+    </RelativePanel>
 </Page>

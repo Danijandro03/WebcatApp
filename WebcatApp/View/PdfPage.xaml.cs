@@ -26,5 +26,6 @@ namespace WebcatApp.View
         {
             this.InitializeComponent();
         }
+       
     }
 }
