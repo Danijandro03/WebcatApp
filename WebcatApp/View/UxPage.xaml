@@ -8,9 +8,20 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=UxPage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Light">
 
-    <Grid>
-        <TextBlock Text="UxPage" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+    <TextBlock
+               Text="User Experience"
+               Style="{StaticResource TitleTextBlockStyle}" Margin="10,10,10,10"
+               />
+
+    <!--<FlipView MaxWidth="400" Height="270">
+        <Image Source="ms-appx:///Assets/SampleMedia/sample1.jpg" AutomationProperties.Name="Cliff"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample2.jpg" AutomationProperties.Name="Grapes"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample3.jpg" AutomationProperties.Name="Rainier"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample4.jpg" AutomationProperties.Name="Sunset"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample5.jpg" AutomationProperties.Name="Valley"/>
+    </FlipView>-->
+
 </Page>

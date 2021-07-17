@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\FatherModel.cs" />
+    <Compile Include="Model\ImageFileInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Base\BasePageModel.cs" />
     <Compile Include="ViewModel\Base\ViewModelLocator.cs" />

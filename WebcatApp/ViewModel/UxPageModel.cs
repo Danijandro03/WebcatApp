@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebcatApp.ViewModel.Base;
+using MUXC = Microsoft.UI.Xaml.Controls;
 
 namespace WebcatApp.ViewModel
 {

@@ -11,22 +11,44 @@
     xmlns:viewmodel="using:WebcatApp.ViewModel" 
     d:DataContext="{d:DesignInstance Type=viewmodel:PdfPageModel}"
     mc:Ignorable="d" x:Name="root">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button Content="Remote PDF" Command="{Binding DownloadPDFFile}" />
-        </StackPanel>
-        <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding PdfPages}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding}" Margin="0 2" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-    </Grid>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="RelativePanel">
+        <GridView>
+            <!--<GridView.ColumnDefinitions>
+                <ColumnDefinition Width="290" />
+                <ColumnDefinition Width="*" />
+            </GridView.ColumnDefinitions>
+            <GridView.RowDefinitions>
+                <RowDefinition Height="134.25"/>
+                <RowDefinition Height="180.75"/>
+                <RowDefinition Height="*" />
+            </GridView.RowDefinitions>-->
+
+            <RelativePanel>
+                <TextBlock
+               Text="Download PDF"
+               Style="{StaticResource TitleTextBlockStyle}" Margin="10,10,10,10"
+               />
+
+            </RelativePanel>
+            <TextBlock
+               Text="La segunda pantalla que llamaras PDF, debes obtener el archivo (https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf) usando el metodo de peticiones REST que prefieras y luego guardarlo de manera local por codigo. Cuando ya este guardado como StorageFile deberas mostrarlo en la pantalla con el control que prefieras dentro del app, no se permite mostrarlo usando un Launcher ni otra app.
+"
+               Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" Margin="85,1,0,48" Grid.Row="1" Width="1040" Grid.Column="1"
+               />
+            <Button Content="Download PDF" Command="{Binding DownloadPDFFile}" Margin="470,140,0,0" Grid.Row="1" Grid.Column="1" Height="30" Width="250" VerticalAlignment="Top" />
+
+            <RelativePanel Grid.Column="1" Margin="0,10,0,3" Grid.Row="2">
+                <ScrollViewer ZoomMode="Enabled" Background="DarkGray">
+                    <ItemsControl ItemsSource="{Binding PdfPages}" Height="670" Width="1200">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding}" Margin="0 2" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </RelativePanel>
+        </GridView>
+    </RelativePanel>
 </Page>
