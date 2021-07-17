@@ -2,20 +2,30 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WebcatApp.ViewModel.Base;
+using Windows.Data.Pdf;
+using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace WebcatApp.ViewModel
 {
     public class PdfPageModel : BasePageModel
     {
-        private string texto1;
-        public string texto { get { return texto1; } set { texto1 = value; RaisePropertyChanged(); } }
+        private Collection<BitmapImage> pdfPages = new ObservableCollection<BitmapImage>();
+        public Collection<BitmapImage> PdfPages { get { return pdfPages; } set { pdfPages = value; RaisePropertyChanged(); } }
+        private string pdf;
+        public string Pdf { get { return pdf; } set { pdf = value; RaisePropertyChanged(); } }
+        //private string texto;
+        //public string Texto { get { return texto; } set { texto = value; RaisePropertyChanged(); } }
         private ICommand _returnText;
         public ICommand ReturnText => _returnText ?? (_returnText = new RelayCommand(metod));
 
@@ -23,16 +33,49 @@ namespace WebcatApp.ViewModel
         {
 
         }
-        public void metod()
+        public async void metod()
         {
-            texto = "You fired the custom command";
+
+            try
+            {
+                Uri source = new Uri("https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf");
+                StorageFile destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("Architecting Mobile Apps.pdf", CreationCollisionOption.ReplaceExisting);
+                BackgroundDownloader downloader = new BackgroundDownloader();
+                DownloadOperation download = downloader.CreateDownload(source, destinationFile);
+                var Pdf = await download.StartAsync();
+                Debug.WriteLine("Download successfull");
+                string pth = ApplicationData.Current.LocalFolder.Path;
+                StorageFile f = await StorageFile.GetFileFromPathAsync(pth + "Architecting Mobile Apps.pdf");
+                PdfDocument doc = await PdfDocument.LoadFromFileAsync(f);
+                Load(doc);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Download error. Exception: " + ex);
+            }
+        }
+
+        async void Load(PdfDocument doc)
+        {
+
+            PdfPages.Clear();
+
+            for (uint i = 0; i < doc.PageCount; i++)
+            {
+                BitmapImage image = new BitmapImage();
+
+                var page = doc.GetPage(i);
+
+                using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                {
+                    await page.RenderToStreamAsync(stream);
+                    await image.SetSourceAsync(stream);
+                }
+
+                PdfPages.Add(image);
+            }
+
         }
     }
+    
 }
-
-// AsStreamForRead().CopyTo(dst); } catch (Exception ex) {}
-// Create sample file; replace if exists. StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-// StorageFile sampleFile = await storageFolder.CreateFileAsync("Prajesh.pdf", CreationCollisionOption.ReplaceExisting);
-//var sampleFile = await DownloadsFolder.CreateFileAsync("ManualFile.pdf", CreationCollisionOption.ReplaceExisting); var
-//cli = new HttpClient(); var str = await cli.GetStreamAsync(uriBing); var dst = await sampleFile.OpenStreamForWriteAsync();
-//await str.AsInputStream().AsStreamForRead().CopyToAsync(dst);// AsStreamForRead().CopyTo(dst); } catch (Exception ex) {}
