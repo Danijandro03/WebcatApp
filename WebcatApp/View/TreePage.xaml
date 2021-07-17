@@ -20,12 +20,6 @@
                Text="Tree View"
                Style="{StaticResource TitleTextBlockStyle}" Grid.RowSpan="2" Margin="10,10,10,10"
                />
-        <TextBlock
-               Text="En la primera pantalla que llamaras TREE, debes usar el control TREEVIEW de WinUI (https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.treeview?view=net-5.0) 
-   para mostrar una lista de elementos anidados el cual debe tener al menos 3 items padres y 2 items hijos y 3 item sub-hijos. Los items no los puedes agregar
-   desde el XAML. Adicionalmente el TreeView debe tener persistencia de ubicacion del nodo al abrir y cerrar el app."
-               Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" Margin="85,24,0,48" Grid.Row="1" Width="1040"
-               />
         <ScrollViewer ZoomMode="Enabled" Background="Cornsilk" Grid.Row="2" HorizontalAlignment="Center">
             <StackPanel>
                 <muxc:TreeView ItemsSource="{Binding Fath}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="533" Width="598" >
