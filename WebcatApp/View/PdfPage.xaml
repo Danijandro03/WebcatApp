@@ -12,39 +12,28 @@
     d:DataContext="{d:DesignInstance Type=viewmodel:PdfPageModel}"
     mc:Ignorable="d" x:Name="root">
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="RelativePanel">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="290" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="134.25"/>
-                <RowDefinition Height="180.75"/>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <TextBlock Text="Download PDF"
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <TextBlock Text="Download PDF"
                            Style="{StaticResource TitleTextBlockStyle}" 
-                           Margin="24,0,0,24"/>
-            </RelativePanel>
-            <TextBlock
-               Text="La segunda pantalla que llamaras PDF, debes obtener el archivo (https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf) usando el metodo de peticiones REST que prefieras y luego guardarlo de manera local por codigo. Cuando ya este guardado como StorageFile deberas mostrarlo en la pantalla con el control que prefieras dentro del app, no se permite mostrarlo usando un Launcher ni otra app."
-               Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Left" Margin="85,1,0,48" Grid.Row="1" Width="1040" Grid.Column="1"
+                           Margin="8,0,0,24"/>
+            <TextBlock Text="La segunda pantalla que llamaras PDF, debes obtener el archivo (https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf) usando el metodo de peticiones REST que prefieras y luego guardarlo de manera local por codigo. Cuando ya este guardado como StorageFile deberas mostrarlo en la pantalla con el control que prefieras dentro del app, no se permite mostrarlo usando un Launcher ni otra app."
+                    Style="{StaticResource BodyTextBlockStyle}" Width="270"
                />
-            <Button Content="Download PDF" Command="{Binding DownloadPDFFile}" Margin="470,140,0,0" Grid.Row="1" Grid.Column="1" Height="30" Width="250" VerticalAlignment="Top" />
-            <RelativePanel  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Column="1" Margin="0,10,0,3" Grid.Row="2">
-                <ScrollViewer ZoomMode="Enabled" Background="DarkGray">
-                    <ItemsControl ItemsSource="{Binding PdfPages}" Height="670" Width="1200">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding}" Margin="0 2" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
-            </RelativePanel>
-        </Grid>
-    </RelativePanel>
+            <Button Content="Download PDF" Command="{Binding DownloadPDFFile}" Margin="25,10,0,0" Height="30" Width="250"/>
+        </StackPanel>
+        <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding PdfPages}" Height="670" Width="1200">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Margin="1 3" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 </Page>
