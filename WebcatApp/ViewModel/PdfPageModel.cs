@@ -22,34 +22,41 @@ namespace WebcatApp.ViewModel
     public class PdfPageModel : BasePageModel
     {
         
-        private List<BitmapImage> pdfPages = new List<BitmapImage>();
-        public List<BitmapImage> PdfPages { get { return pdfPages; } set { pdfPages = value; RaisePropertyChanged(); } }
+        private ObservableCollection<BitmapImage> pdfPages = new ObservableCollection<BitmapImage>();
+        public ObservableCollection<BitmapImage> PdfPages { get { return pdfPages; } set { pdfPages = value; RaisePropertyChanged(); } }
         private string pdf;
         public string Pdf { get { return pdf; } set { pdf = value; RaisePropertyChanged(); } }
         //private string texto;
         //public string Texto { get { return texto; } set { texto = value; RaisePropertyChanged(); } }
         private ICommand _DownloadPDFFile;
-        public ICommand DownloadPDFFile => _DownloadPDFFile ?? (_DownloadPDFFile = new RelayCommand(metod));
+        public ICommand DownloadPDFFile => _DownloadPDFFile ?? (_DownloadPDFFile = new RelayCommand(Metod));
 
         public PdfPageModel(INavigationService navigationService) : base(navigationService)
         {
 
         }
-        public async void metod()
+        public async void Metod()
         {
 
             try
             {
                 Uri source = new Uri("https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf");
-                StorageFile destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("Architecting Mobile Apps.pdf", CreationCollisionOption.ReplaceExisting);
+                StorageFile destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("Architecting_Mobile_Apps.pdf", CreationCollisionOption.ReplaceExisting);
                 BackgroundDownloader downloader = new BackgroundDownloader();
                 DownloadOperation download = downloader.CreateDownload(source, destinationFile);
                 var Pdf = await download.StartAsync();
-                Debug.WriteLine("Download successfull");
+                Debug.WriteLine("Download successfull");                
                 string pth = ApplicationData.Current.LocalFolder.Path;
-                StorageFile f = await StorageFile.GetFileFromPathAsync(pth + "Architecting Mobile Apps.pdf");
-                PdfDocument doc = await PdfDocument.LoadFromFileAsync(f);
+                StorageFile f = await StorageFile.GetFileFromPathAsync(pth + "Architecting_Mobile_Apps.pdf");
+                if (f == null)
+                {
+
+                }else
+                {
+                    PdfDocument doc = await PdfDocument.LoadFromFileAsync(f);
                 Load(doc);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -57,7 +64,7 @@ namespace WebcatApp.ViewModel
             }
         }
 
-        async void Load(PdfDocument doc)
+        private async void Load(PdfDocument doc)
         {
 
             PdfPages.Clear();
@@ -78,6 +85,7 @@ namespace WebcatApp.ViewModel
             }
 
         }
+
     }
     
 }
