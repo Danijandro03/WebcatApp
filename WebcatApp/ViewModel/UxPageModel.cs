@@ -10,8 +10,6 @@ namespace WebcatApp.ViewModel
 {
     public class UxPageModel : BasePageModel
     {
-
-    
         public UxPageModel(INavigationService navigationService) : base(navigationService)
         {
 

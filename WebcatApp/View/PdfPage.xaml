@@ -11,24 +11,6 @@
     xmlns:viewmodel="using:WebcatApp.ViewModel" 
     d:DataContext="{d:DesignInstance Type=viewmodel:PdfPageModel}"
     mc:Ignorable="d" x:Name="root">
-    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button Content="Remote PDF" Tapped="{x:Bind OpenRemote}" />
-        </StackPanel>
-        <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding PdfPages, ElementName=root}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding}" Margin="0 2" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-    </Grid>-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />

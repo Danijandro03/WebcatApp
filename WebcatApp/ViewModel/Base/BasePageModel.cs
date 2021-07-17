@@ -13,12 +13,10 @@ namespace WebcatApp.ViewModel.Base
         public INavigationService _navigationService;
         private bool isBusy;
         public bool IsBusy { get { return isBusy; } set { isBusy = value; RaisePropertyChanged(); } }
-
         public BasePageModel(INavigationService navigationservice)
         {
             _navigationService = navigationservice;
         }
-
         public void GoTo()
         {
             _navigationService.NavigateTo("AppPage");
