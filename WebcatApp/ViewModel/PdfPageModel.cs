@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -38,30 +39,15 @@ namespace WebcatApp.ViewModel
         public async void Metod()
         {
 
-            try
-            {
-                Uri source = new Uri("https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf");
-                StorageFile destinationFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("Architecting_Mobile_Apps.pdf", CreationCollisionOption.ReplaceExisting);
-                BackgroundDownloader downloader = new BackgroundDownloader();
-                DownloadOperation download = downloader.CreateDownload(source, destinationFile);
-                var Pdf = await download.StartAsync();
-                Debug.WriteLine("Download successfull");                
-                string pth = ApplicationData.Current.LocalFolder.Path;
-                StorageFile f = await StorageFile.GetFileFromPathAsync(pth + "Architecting_Mobile_Apps.pdf");
-                if (f == null)
-                {
-
-                }else
-                {
-                    PdfDocument doc = await PdfDocument.LoadFromFileAsync(f);
-                Load(doc);
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Download error. Exception: " + ex);
-            }
+            HttpClient client = new HttpClient();
+            var stream = await
+                client.GetStreamAsync("https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf");
+            var memStream = new MemoryStream();
+            await stream.CopyToAsync(memStream);
+            memStream.Position = 0;
+            PdfDocument doc = await PdfDocument.LoadFromStreamAsync(memStream.AsRandomAccessStream());
+            Load(doc);
+               
         }
 
         private async void Load(PdfDocument doc)
