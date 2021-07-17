@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WebcatApp.Model;
 using WebcatApp.ViewModel.Base;
 using Windows.Data.Pdf;
 using Windows.Networking.BackgroundTransfer;
@@ -20,14 +21,15 @@ namespace WebcatApp.ViewModel
 {
     public class PdfPageModel : BasePageModel
     {
-        private Collection<BitmapImage> pdfPages = new ObservableCollection<BitmapImage>();
-        public Collection<BitmapImage> PdfPages { get { return pdfPages; } set { pdfPages = value; RaisePropertyChanged(); } }
+        
+        private List<BitmapImage> pdfPages = new List<BitmapImage>();
+        public List<BitmapImage> PdfPages { get { return pdfPages; } set { pdfPages = value; RaisePropertyChanged(); } }
         private string pdf;
         public string Pdf { get { return pdf; } set { pdf = value; RaisePropertyChanged(); } }
         //private string texto;
         //public string Texto { get { return texto; } set { texto = value; RaisePropertyChanged(); } }
-        private ICommand _returnText;
-        public ICommand ReturnText => _returnText ?? (_returnText = new RelayCommand(metod));
+        private ICommand _DownloadPDFFile;
+        public ICommand DownloadPDFFile => _DownloadPDFFile ?? (_DownloadPDFFile = new RelayCommand(metod));
 
         public PdfPageModel(INavigationService navigationService) : base(navigationService)
         {

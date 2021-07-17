@@ -8,16 +8,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"    
     DataContext="{Binding Source={StaticResource Locator}, Path=PdfPage}"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:viewmodel="using:WebcatApp.ViewModel" 
+    d:DataContext="{d:DesignInstance Type=viewmodel:PdfPageModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
+       
         <StackPanel>
-            <AppBarButton x:Name="CustomButton" Content="Download file" Command="{Binding ReturnText}"/>
+            <AppBarButton x:Name="CustomButton" Content="Download file" Command="{Binding DownloadPDFFile}"/>
         </StackPanel>
         <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
             <ItemsControl ItemsSource="Model.PdfPages, ElementName=root}">
@@ -28,15 +30,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
     </Grid>
-    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel ItemsSource ="{Binding}">
-            <Button Content="Architecting Mobile Apps" Command="{x:Bind ReturnText}"/>
-        </StackPanel>
-    </Grid>-->
 </Page>
