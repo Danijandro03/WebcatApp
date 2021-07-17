@@ -23,6 +23,7 @@ namespace WebcatApp.ViewModel
         {
             Fath = new List<FatherModel>();
         }
+
         private void FatherLoad()
         {
             for (int x = 1; x < 4; x++)
@@ -50,6 +51,7 @@ namespace WebcatApp.ViewModel
             }
 
         }
+
         private void CreaFath(int x)
         {
             Fath.Add(new FatherModel { Id = x, Name = "Father " + x.ToString() });
