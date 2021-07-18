@@ -5,24 +5,24 @@ using WebcatApp.View;
 
 namespace WebcatApp.ViewModel.Base
 {
-    public class ViewModelLocator
+    public class ViewModelLocator : SimpleIoc
     {
         public static ViewModelLocator Locator => locator ?? (locator = new ViewModelLocator());
         private static ViewModelLocator locator;
         public ViewModelLocator()
         {
             var nav = new NavigationService();
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            if (!SimpleIoc.Default.IsRegistered<INavigationService>())
+            ServiceLocator.SetLocatorProvider(() => Default);
+            if (!Default.IsRegistered<INavigationService>())
             {
-                SimpleIoc.Default.Register<INavigationService, NavigationService>();
-                SimpleIoc.Default.Register<InitPageModel>();
+                Default.Register<INavigationService, NavigationService>();
+                Default.Register<InitPageModel>();
                 nav.Configure("InitPage", typeof(InitPage));
-                SimpleIoc.Default.Register<TreePageModel>();
+                Default.Register<TreePageModel>();
                 nav.Configure("TreePage", typeof(TreePage));
-                SimpleIoc.Default.Register<PdfPageModel>();
+                Default.Register<PdfPageModel>();
                 nav.Configure("PdfPage", typeof(PdfPage));
-                SimpleIoc.Default.Register<UxPageModel>();
+                Default.Register<UxPageModel>();
                 nav.Configure("UxPage", typeof(UxPage));
 
             }

@@ -28,23 +28,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-    </Grid>-->
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button Content="Remote PDF" Command="{Binding DownloadPDFFile}" />
-        </StackPanel>
-        <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding PdfPages}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding}" Margin="0 2" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
     </Grid>
 </Page>

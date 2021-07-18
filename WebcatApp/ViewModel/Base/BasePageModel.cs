@@ -2,9 +2,11 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Navigation;
 
 namespace WebcatApp.ViewModel.Base
 {
@@ -12,6 +14,9 @@ namespace WebcatApp.ViewModel.Base
     {
         public INavigationService _navigationService;
         private bool isBusy;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public bool IsBusy { get { return isBusy; } set { isBusy = value; RaisePropertyChanged(); } }
 
         public BasePageModel(INavigationService navigationservice)
@@ -23,5 +28,11 @@ namespace WebcatApp.ViewModel.Base
         {
             _navigationService.NavigateTo("AppPage");
         }
+
+        internal void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _navigationService.NavigateTo("InitPage");
+        }
+
     }
 }
