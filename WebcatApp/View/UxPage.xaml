@@ -132,38 +132,7 @@
               RelativePanel.Below="TitleTextBlock"
               ItemTemplate="{StaticResource ImageGridView_DefaultItemTemplate}"
               ItemContainerStyle="{StaticResource ImageGridView_DefaultItemContainerStyle}"/>
-        <CommandBar x:Name="MainCommandBar"
-                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-                    RelativePanel.AlignRightWithPanel="True"
-                    OverflowButtonVisibility="Collapsed"
-                    DefaultLabelPosition="Right">
-            <AppBarButton Icon="Zoom"
-                          Label="Zoom"
-                          Command="{Binding GetImages}"/>
-        </CommandBar>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource LargeWindowBreakpoint}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowBreakpoint}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource MinWindowBreakpoint}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Property="Background" Value="Gray"/>
-                        <Setter Property="Margin" Value="8"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+     
     </RelativePanel>
 
 </Page>
