@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
 using Windows.Data.Pdf;
 using System.Collections.ObjectModel;
+using WebcatApp.ViewModel;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -33,6 +34,6 @@ namespace WebcatApp.View
         {
             this.InitializeComponent();
         }
-        
+        PdfPageModel Vm => (PdfPageModel)DataContext;
     }
 }
