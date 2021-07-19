@@ -9,13 +9,19 @@
     mc:Ignorable="d"     
     DataContext="{Binding Source={StaticResource Locator}, Path=InitPage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
-
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>        
+   <Border Background="#2f5cb6"/>
     <muxc:NavigationView x:Name="NavView"
-                         PaneDisplayMode="Left" IsBackButtonVisible="Collapsed"
+                         PaneDisplayMode="LeftMinimal" IsBackButtonVisible="Collapsed"
                          AlwaysShowHeader="False"  IsTabStop="False"
                          ItemInvoked="{x:Bind ViewModel.NavView_ItemInvoked}"
-                         IsSettingsVisible="False"                         
-                         >
+                         IsSettingsVisible="False" Background="#152951"                        
+                         >       
         <muxc:NavigationView.PaneTitle >
             Menu
         </muxc:NavigationView.PaneTitle>
@@ -38,4 +44,11 @@
         </muxc:NavigationView.MenuItems>
         <Frame Loaded="{x:Bind ViewModel.FrameLoaded}"/>
     </muxc:NavigationView>
+        <Border Grid.Column ="1" Background="#1f3d7a"/>
+        
+        
+
+        <Border Grid.Column ="2" Background="#682ebf"/>
+        
+    </Grid>
 </Page>
