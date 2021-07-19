@@ -24,11 +24,4 @@
           RelativePanel.Below="TitleTextBlock"
           ItemsSource="{Binding }"/>
     </RelativePanel>
-    <!--<FlipView MaxWidth="400" Height="270">
-        <Image Source="ms-appx:///Assets/SampleMedia/sample1.jpg" AutomationProperties.Name="Cliff"/>
-        <Image Source="ms-appx:///Assets/SampleMedia/sample2.jpg" AutomationProperties.Name="Grapes"/>
-        <Image Source="ms-appx:///Assets/SampleMedia/sample3.jpg" AutomationProperties.Name="Rainier"/>
-        <Image Source="ms-appx:///Assets/SampleMedia/sample4.jpg" AutomationProperties.Name="Sunset"/>
-        <Image Source="ms-appx:///Assets/SampleMedia/sample5.jpg" AutomationProperties.Name="Valley"/>
-    </FlipView>-->
 </Page>

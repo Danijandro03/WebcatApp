@@ -17,7 +17,7 @@ namespace WebcatApp.ViewModel
         public Frame Frame { get { return frame; } set { frame = value; RaisePropertyChanged(); } }
         public InitPageModel(INavigationService navigationService) : base(navigationService)
         {
-           
+         
         }
         public void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender,
                                            Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
@@ -41,8 +41,8 @@ namespace WebcatApp.ViewModel
         public void FrameLoaded(object sender, RoutedEventArgs e)
         {
             Frame = (Frame)sender;
-            
+          
         }
-        
+      
     }
 }
