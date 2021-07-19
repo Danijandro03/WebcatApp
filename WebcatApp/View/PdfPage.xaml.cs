@@ -34,6 +34,6 @@ namespace WebcatApp.View
         {
             this.InitializeComponent();
         }
-        PdfPageModel Vm => (PdfPageModel)DataContext;
+      
     }
 }

@@ -9,40 +9,26 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=UxPage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    RequestedTheme="Light"
-    >
-    <Page.Resources>
-        <DataTemplate x:Key="ImageGridView_DefaultItemTemplate"
-                      x:DataType="local1:ImageFileInfo">
-            <Grid Height="300"
-                Width="300"
-                Margin="8">
-                <Grid.RowDefinitions>                    
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Image x:Name="ItemImage"
-                        Source="{Binding Images}"
-                        Stretch="Uniform" />
-                <StackPanel Orientation="Vertical"
-                Grid.Row="1">
-                    <TextBlock Text="{x:Bind ImageTitle}"
-                   HorizontalAlignment="Center"
-                   Style="{StaticResource SubtitleTextBlockStyle}" />
-                    <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-                        <TextBlock Text="{x:Bind ImageFileType}"
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource CaptionTextBlockStyle}" />
-                        <TextBlock Text="{x:Bind ImageDimensions}"
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource CaptionTextBlockStyle}"
-                       Margin="8,0,0,0" />
-                    </StackPanel>
-                    <muxc:RatingControl Value="{x:Bind ImageRating}" IsReadOnly="True"/>
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Light">
 
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:Name="TitleTextBlock"
+               Text="Collection"
+               Margin="24,0,0,24"
+               Style="{StaticResource TitleTextBlockStyle}"/>
+        <GridView x:Name="ImageGridView"
+          Margin="0,0,0,8"
+          RelativePanel.AlignLeftWithPanel="True"
+          RelativePanel.AlignRightWithPanel="True"
+          RelativePanel.Below="TitleTextBlock"
+          ItemsSource="{Binding }"/>
+    </RelativePanel>
+    <!--<FlipView MaxWidth="400" Height="270">
+        <Image Source="ms-appx:///Assets/SampleMedia/sample1.jpg" AutomationProperties.Name="Cliff"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample2.jpg" AutomationProperties.Name="Grapes"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample3.jpg" AutomationProperties.Name="Rainier"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample4.jpg" AutomationProperties.Name="Sunset"/>
+        <Image Source="ms-appx:///Assets/SampleMedia/sample5.jpg" AutomationProperties.Name="Valley"/>
+    </FlipView>-->
 </Page>

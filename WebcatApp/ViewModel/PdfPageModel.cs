@@ -32,8 +32,7 @@ namespace WebcatApp.ViewModel
         {
 
             HttpClient client = new HttpClient();
-            var stream = await
-                client.GetStreamAsync("https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf");
+            var stream = await client.GetStreamAsync("https://gotocon.com/dl/goto-aar-2014/slides/JamesMontemagno_XamarinFormsNativeIOSAndroidAndWindowsPhoneAppsFromONECCodebase.pdf");
             var memStream = new MemoryStream();
             await stream.CopyToAsync(memStream);
             memStream.Position = 0;

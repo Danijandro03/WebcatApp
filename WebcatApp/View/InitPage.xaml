@@ -6,21 +6,36 @@
     xmlns:local="using:WebcatApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"    
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"    
+    mc:Ignorable="d"     
     DataContext="{Binding Source={StaticResource Locator}, Path=InitPage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
-    <muxc:NavigationView x:Name="NavView" Header="Technical Test" 
-                         PaneDisplayMode="LeftMinimal" IsBackButtonVisible="Collapsed"
-                         AlwaysShowHeader="True" PaneTitle="Menu" 
-                         ItemInvoked="{x:Bind ViewModel.NavView_ItemInvoked}">
+    <muxc:NavigationView x:Name="NavView"
+                         PaneDisplayMode="Left" IsBackButtonVisible="Collapsed"
+                         AlwaysShowHeader="False"  IsTabStop="False"
+                         ItemInvoked="{x:Bind ViewModel.NavView_ItemInvoked}"
+                         IsSettingsVisible="False"                         
+                         >
+        <muxc:NavigationView.PaneTitle >
+            Menu
+        </muxc:NavigationView.PaneTitle>
         <muxc:NavigationView.MenuItems>
-            <muxc:NavigationViewItem  Content="Tree" Tag="Tree"/>
-            <muxc:NavigationViewItem  Content="PDF" Tag="Pdf"/>
-            <muxc:NavigationViewItem  Content="UX" Tag="Ux"/>
+            <muxc:NavigationViewItem Tag="Tree" Content="TreeView">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED43;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Tag="Pdf" Content="PDF">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE956;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Tag="Ux" Content="UX">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB3C;"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
         </muxc:NavigationView.MenuItems>
         <Frame Loaded="{x:Bind ViewModel.FrameLoaded}"/>
     </muxc:NavigationView>
-    
 </Page>

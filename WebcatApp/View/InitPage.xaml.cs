@@ -24,7 +24,7 @@ namespace WebcatApp.View
     /// </summary>
     public sealed partial class InitPage : Page
     {
-
+       
         public InitPage()
         {
             this.InitializeComponent();

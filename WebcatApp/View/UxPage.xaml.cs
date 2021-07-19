@@ -10,6 +10,7 @@ namespace WebcatApp.View
     /// </summary>
     public sealed partial class UxPage : Page
     {
+
         public UxPage()
         {
             this.InitializeComponent();
