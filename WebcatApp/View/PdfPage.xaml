@@ -11,24 +11,16 @@
     xmlns:viewmodel="using:WebcatApp.ViewModel" 
     d:DataContext="{d:DesignInstance Type=viewmodel:PdfPageModel}"
     mc:Ignorable="d" x:Name="root">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="Grid">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Border Background="#2f5cb6"/>
-        <Border Grid.Column ="1" Background="#1f3d7a"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#152951"/>
-        <StackPanel>
-            <TextBlock Text="Download PDF"
-                           Style="{StaticResource TitleTextBlockStyle}" 
-                           Margin="8,0,0,24"/>
-            <Button Content="Download PDF" Style="{StaticResource AccentButtonStyle}" 
-                    Command="{Binding DownloadPDFFile}" 
-                    Margin="25,200,0,0" Height="30" 
-                    Width="200"/>
-        </StackPanel>
-        <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1" Grid.RowSpan="2">
             <ItemsControl ItemsSource="{Binding PdfPages}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -36,6 +28,22 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </ScrollViewer>
+        </ScrollViewer>       
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Height="100">
+            <TextBlock Text="Download PDF"
+                           Style="{StaticResource TitleTextBlockStyle}" 
+                           Margin="8,0,0,24"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="10,0,10,0" Height="600">
+            <AutoSuggestBox PlaceholderText="See PDF File" Background="AliceBlue" BorderBrush="DarkBlue"/>
+            <Button Content="Download PDF" Style="{StaticResource AccentButtonStyle}" 
+                    Command="{Binding DownloadPDFFile}" 
+                    Height="30" 
+                    Width="130" Margin="45,130,0,0"/>
+            <muxc:TeachingTip
+                IsOpen="{Binding IsDown}"                
+                Title="Your PDF File is Downliading now"
+                Subtitle="Waite a moment please"/>
+        </StackPanel>
     </Grid>
 </Page>

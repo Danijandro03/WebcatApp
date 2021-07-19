@@ -8,35 +8,29 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=TreePage}"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:Model="using:WebcatApp.Model"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    >
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Border Background="#2f5cb6"/>
-        <StackPanel Grid.Column="0" Margin="40,0,0,0" VerticalAlignment="Center">
-        <TextBlock Text="Tree View" Style="{StaticResource TitleTextBlockStyle}" Margin="10,10,10,10"
-               />
-        
-        <ScrollViewer ZoomMode="Enabled" Background="Cornsilk" >
-            <StackPanel Background="Black">
-                <muxc:TreeView ItemsSource="{Binding Fath}" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="533" Width="598" FontFamily="{StaticResource ContentControlThemeFontFamily}">
-                    <muxc:TreeView.RenderTransform>
-                        <CompositeTransform Rotation="0.284" ScaleX="1" ScaleY="1" SkewX="0.078" SkewY="0" TranslateX="0.363" TranslateY="0.002"/>
-                    </muxc:TreeView.RenderTransform>
-                    <muxc:TreeView.ItemTemplate>
-                        <DataTemplate x:DataType="Model:FatherModel">
-                            <muxc:TreeViewItem ItemsSource="{x:Bind Sons}" Content="{x:Bind Name}" FontStyle="Italic"/>
-                        </DataTemplate>
-                    </muxc:TreeView.ItemTemplate>
-                </muxc:TreeView>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#2f5cb6" Grid.ColumnSpan="1"/>
+        <TextBlock Text="Tree View" Style="{StaticResource TitleTextBlockStyle}" Margin="10,10,10,10"/>        
+        <ScrollViewer ZoomMode="Enabled" Grid.Row="1"  Grid.Column="1" Background="#211775" Margin="35,35,95,9">            
+            <muxc:TreeView ItemsSource="{Binding Fath}" 
+                                   RenderTransformOrigin="0.5,0.5" 
+                                   Height="350" Width="450" FontFamily="{StaticResource ContentControlThemeFontFamily}">
+                <muxc:TreeView.ItemTemplate>
+                    <DataTemplate x:DataType="Model:FatherModel">
+                        <muxc:TreeViewItem ItemsSource="{x:Bind Sons}" Content="{x:Bind Name}" FontStyle="Italic"/>
+                    </DataTemplate>
+                </muxc:TreeView.ItemTemplate>
+            </muxc:TreeView>
         </ScrollViewer>
-        </StackPanel>
     </Grid>
-
 </Page>

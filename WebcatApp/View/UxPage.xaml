@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WebcatApp.View"
-    xmlns:local1="using:WebcatApp.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -29,6 +28,10 @@
             <TextBlock Foreground="White" FontSize="25" Text="High: 66°" Margin="0,0,20,0"/>
             <TextBlock Foreground="White" FontSize="25" Text="Low: 43°" Margin="0,0,20,0"/>
             <TextBlock Foreground="White" FontSize="25" Text="Feels like: 63°"/>
+            <MediaPlayerElement Source="ms-appx:///Assets/ladybug.wmv"
+                    MaxWidth="400"
+                    AutoPlay="False"
+                    AreTransportControlsEnabled="True" />
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
             <TextBlock Foreground="White" FontSize="25" Text="Today - 64° F"/>
@@ -36,7 +39,6 @@
             <TextBlock Foreground="White" FontSize="25" Text="Precipitation: 25%"/>
         </StackPanel>
         <Image Margin="20" Source="Assets/partially-cloudy.png"/>
-
     </Grid>
 
 </Page>
