@@ -147,6 +147,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Cocinella\1.jpg" />
+    <Content Include="Assets\Cocinella\2.jpg" />
+    <Content Include="Assets\Cocinella\3.jpg" />
+    <Content Include="Assets\Cocinella\4.jpg" />
     <Content Include="Assets\partially-cloudy.png" />
     <Content Include="Assets\Samples\ladybug.wmv" />
     <Content Include="Properties\Default.rd.xml" />
@@ -169,6 +173,9 @@
       <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>7.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>7.0.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">

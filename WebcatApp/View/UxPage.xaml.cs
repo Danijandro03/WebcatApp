@@ -15,11 +15,16 @@ namespace WebcatApp.View
         {
             this.InitializeComponent();
         }
-        UxPageModel Vm => (UxPageModel)DataContext;
+
+        private UxPageModel GetVm()
+        {
+            return (UxPageModel)DataContext;
+        }
 
         private void ImageGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
+
     }
 }

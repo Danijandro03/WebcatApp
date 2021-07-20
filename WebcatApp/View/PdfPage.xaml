@@ -39,11 +39,11 @@
             <Button Content="Download PDF" Style="{StaticResource AccentButtonStyle}" 
                     Command="{Binding DownloadPDFFile}" 
                     Height="30" 
-                    Width="130" Margin="45,130,0,0"/>
+                    Width="130" Margin="0,130,0,0" HorizontalAlignment="Center"/>
             <muxc:TeachingTip
                 IsOpen="{Binding IsDown}"                
                 Title="Your PDF File is Downliading now"
-                Subtitle="Waite a moment please"/>
+                Subtitle="Waite a moment please" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Page>

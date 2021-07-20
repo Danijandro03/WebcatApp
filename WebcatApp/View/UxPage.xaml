@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=UxPage}"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls" 
+    xmlns:muxc="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     RequestedTheme="Light">
 
@@ -20,25 +21,48 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="#2f5cb6"/>
-        <Border Grid.Column ="1" Background="#1f3d7a"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#152951"/>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
-            HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="25" Text="High: 66°" Margin="0,0,20,0"/>
-            <TextBlock Foreground="White" FontSize="25" Text="Low: 43°" Margin="0,0,20,0"/>
-            <TextBlock Foreground="White" FontSize="25" Text="Feels like: 63°"/>
-            <MediaPlayerElement Source="ms-appx:///Assets/ladybug.wmv"
-                    MaxWidth="400"
-                    AutoPlay="False"
-                    AreTransportControlsEnabled="True" />
-        </StackPanel>
-        <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="25" Text="Today - 64° F"/>
-            <TextBlock Foreground="White" FontSize="25" Text="Partially Cloudy"/>
-            <TextBlock Foreground="White" FontSize="25" Text="Precipitation: 25%"/>
-        </StackPanel>
-        <Image Margin="20" Source="Assets/partially-cloudy.png"/>
-    </Grid>
+        <Border Background="#2f5cb6" Grid.Column="0">
 
+            <StackPanel Grid.Column="0" VerticalAlignment="Center"
+                        HorizontalAlignment="Center" Height="647">                
+                <TextBlock Foreground="White" FontSize="20" 
+                           Style="{StaticResource TitleTextBlockStyle}" 
+                           Text="Coccinellidae" Width="383" 
+                           HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                <RichTextBlock SelectionHighlightColor="Green" 
+                               Margin="20,20,20,0">
+                    <Paragraph Foreground="White" 
+                               FontSize="14" TextAlignment="Justify" FontStyle="Oblique">
+                        Is a widespread family of small beetles ranging in size from 0.8 to 18 mm (0.03 to 0.71 in).
+                    The family is commonly known as ladybugs in North America and ladybirds in Britain and other parts of the English-speaking world. Entomologists prefer the names ladybird beetles or lady 
+                    beetles as these insects are not classified as true bugs.
+                    </Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </Border>
+        <Border Background="#152951" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <RichTextBlock SelectionHighlightColor="Green" 
+                               Margin="0,0,0,0" Width="515">
+                    <Paragraph Foreground="White" FontSize="20" Margin="10" >
+                        Etymology
+                    </Paragraph>
+                    <Paragraph Foreground="White" 
+                               FontSize="14" TextAlignment="Justify" FontFamily="Comic Sans MS"  Margin="20,20,20,0">
+                        Is a widespread family of small beetles ranging in size fro to 0.71 in).
+                    The family is commonly known as ladybugs in North America and ladybirds in Britain and other parts of the English-speaking world. Entomologists prefer the names ladybird beetles or lady 
+                    beetles as these insects are not classified as true bugs.
+                    </Paragraph>
+                </RichTextBlock>
+                <Border Background="#152951" Grid.ColumnSpan="1">
+                    <MediaPlayerElement Source="ms-appx:///Assets/Samples/ladybug.wmv" 
+                                        AreTransportControlsEnabled="True" AutoPlay="True"/>                    
+                </Border>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column ="1" Background="#1f3d7a" Grid.RowSpan="1"/>
+        <StackPanel Grid.Column="0" VerticalAlignment="Top" Margin="10" Orientation="Horizontal">
+            <PersonPicture Initials="WC" HorizontalAlignment="Right" Height="70" Width="70" />
+        </StackPanel>
+    </Grid>
 </Page>

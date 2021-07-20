@@ -14,12 +14,13 @@ namespace WebcatApp.ViewModel
 {
     public class PdfPageModel : BasePageModel
     {
+
         private bool isdown;
         public bool IsDown { get { return isdown; } set { isdown = value; RaisePropertyChanged(); } }
         private ObservableCollection<BitmapImage> pdfPages = new ObservableCollection<BitmapImage>();
         public ObservableCollection<BitmapImage> PdfPages { get { return pdfPages; } set { pdfPages = value; RaisePropertyChanged(); } }
-        private string pdf;
-        public string Pdf { get { return pdf; } set { pdf = value; RaisePropertyChanged(); } }
+        private string uximage;
+        public string UxImage { get { return uximage; } set { uximage = value; RaisePropertyChanged(); } }
         private ICommand _DownloadPDFFile;
         public ICommand DownloadPDFFile => _DownloadPDFFile ?? (_DownloadPDFFile = new RelayCommand(Metod));
 

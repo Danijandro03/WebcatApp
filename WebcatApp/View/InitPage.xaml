@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>        
    <Border Background="#2f5cb6"/>
         <muxc:NavigationView x:Name="NavView"
-                             IsBackButtonVisible="Auto"
+                             IsBackButtonVisible="Collapsed"
                          PaneDisplayMode="Left" BackRequested="{x:Bind ViewModel.NavView_BackItemInvoked}"
                          AlwaysShowHeader="False" IsTabStop="False"
                          ItemInvoked="{x:Bind ViewModel.NavView_ItemInvoked}"

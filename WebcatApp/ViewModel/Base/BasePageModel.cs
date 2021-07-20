@@ -15,7 +15,6 @@ namespace WebcatApp.ViewModel.Base
         public INavigationService _navigationService;
         private bool isBusy;
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool IsBusy { get { return isBusy; } set { isBusy = value; RaisePropertyChanged(); } }
 
